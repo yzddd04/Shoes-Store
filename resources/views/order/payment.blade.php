@@ -8,7 +8,7 @@
     </head>
     <body>
         <form method="POST" enctype="multipart/form-data" action="{{ route('front.payment_confirm') }}" class="relative flex flex-col w-full max-w-[640px] min-h-screen gap-5 mx-auto bg-[#F5F5F0]">
-            @csrf
+            @csrf // CSRF token for security
             <div id="top-bar" class="flex justify-between items-center px-4 mt-[60px]">
                 <a href="customer-data.html">
                     <img src="{{asset('assets/images/icons/back.svg') }}" class="w-10 h-10" alt="icon">
@@ -101,7 +101,7 @@
                 </div>
                 <div class="flex items-center justify-between">
                     <p class="font-semibold">Discount</p>
-                    <p class="font-bold text-[#FF1943]">- Rp {{ number_format($orderData['grand_discount_amount'], 0, ',', '.') }}</p>
+                    <p class="font-bold text-[#FF1943]">- Rp {{ number_format($orderData['total_discount_amount'], 0, ',', '.') }}</p>
                 </div>
                 <div class="flex items-center justify-between">
                     <p class="font-semibold">PPN 11%</p>
@@ -152,7 +152,7 @@
                         <button type="button" id="Upload-btn" class="appearance-none outline-none w-full py-[14px] text-left text-sm overflow-hidden text-[#878785]" onclick="document.getElementById('Proof').click()">
                             Add an attachment
                         </button>
-                        <input type="file" name="Proof" id="Proof" class="absolute -z-10 opacity-0" required>
+                        <input type="file" name="proof" id="Proof" class="absolute -z-10 opacity-0" required>
                     </div>
                 </div>
                 <hr class="border-[#EAEAED]">

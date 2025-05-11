@@ -16,7 +16,7 @@ class OrderRepository implements OrderRepositoryInterface
     public function findByTrxIdAndPhoneNumber(string $bookingTrxId, string $phoneNumber): ?ProductTransaction
     {
         return ProductTransaction::where('booking_trx_id', $bookingTrxId)
-                                ->where('phone_number', $phoneNumber)
+                                ->where('phone', $phoneNumber)
                                 ->first();
     }
 
@@ -33,7 +33,7 @@ class OrderRepository implements OrderRepositoryInterface
     public function updateSessionData(array $data): void
     {
         $orderData = Session::get('orderData', []);
-        $orderData = array_merge($orderData, $data); 
+        $orderData = array_merge($orderData, $data);
         Session::put('orderData', array_merge($orderData, $data));
     }
 }

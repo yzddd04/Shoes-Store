@@ -9,6 +9,10 @@ use App\Services\OrderService;
 use App\Http\Requests\StoreCustomerDataRequest;
 use App\Models\ProductTransaction;
 use App\Http\Requests\StorePaymentRequest;
+use App\Http\Requests\StoreCheckBookingRequest;
+
+
+
 
 class OrderController extends Controller
 {

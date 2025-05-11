@@ -39,6 +39,14 @@ class OrderService
         $this->orderRepository->saveToSession($orderData);
     }
 
+    public function getMyOrderDetails(array $validated)
+    {
+        return $this->orderRepository->findByTrxIdAndPhoneNumber(
+            $validated['booking_trx_id'],
+            $validated['phone']
+        );
+    }
+
     public function getOrderDetails()
     {
         $orderData = $this->orderRepository->getOrderDataFromSession();
@@ -101,7 +109,7 @@ class OrderService
 
                 $validated['name'] = $orderData['name']; // dari session
                 $validated['email'] = $orderData['email'];
-                $validated['phone'] = $orderData['phone']; 
+                $validated['phone'] = $orderData['phone'];
                 $validated['address'] = $orderData['address'];
                 $validated['post_code'] = $orderData['post_code'];
                 $validated['city'] = $orderData['city'];
