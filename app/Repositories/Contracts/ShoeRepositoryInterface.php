@@ -11,4 +11,6 @@ interface ShoeRepositoryInterface
     public function find(int $id);
 
     public function getPrice(int $ticketId);
+
+    public function searchByName(string $keyword);
 }

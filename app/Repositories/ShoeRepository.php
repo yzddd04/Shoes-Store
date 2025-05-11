@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\Models\Shoe;
 use App\Repositories\Contracts\ShoeRepositoryInterface;
 
+
 class ShoeRepository implements ShoeRepositoryInterface
 {
     public function getPopularShoes(int $limit = 4)
@@ -15,6 +16,11 @@ class ShoeRepository implements ShoeRepositoryInterface
     public function getAllNewShoes()
     {
         return Shoe::latest()->get();
+    }
+
+    public function searchByName(string $keyword)
+    {
+        return Shoes::where('name', 'LIKE', '%' . $keyword . '%')->get();
     }
 
     public function find(int $id) // 1

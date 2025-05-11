@@ -6,6 +6,8 @@ use App\Models\Shoe;
 use App\Models\Category;
 use App\Services\FrontService;
 use Illuminate\View\View;
+use Illuminate\Http\Request;
+
 
 class FrontController extends Controller
 {
@@ -17,10 +19,22 @@ class FrontController extends Controller
         $this->frontService = $frontService;
     }
 
+    public function search(Request $request)
+    {
+        $keyword = $request->input('keyword');
+
+        $shoes = $this->frontService->searchShoes($keyword);
+
+        return view('front.search', [
+            'shoes' => $shoes,
+            'keyword' => $keyword,
+        ]);
+    }
+
     public function index()
     {
         $data = $this->frontService->getFrontPageData();
-        // dd($data); 
+        // dd($data);
         return view('front.index', $data);
     }
 
