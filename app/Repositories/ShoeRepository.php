@@ -20,7 +20,7 @@ class ShoeRepository implements ShoeRepositoryInterface
 
     public function searchByName(string $keyword)
     {
-        return Shoes::where('name', 'LIKE', '%' . $keyword . '%')->get();
+        return Shoe::where('name', 'LIKE', '%' . $keyword . '%')->get();
     }
 
     public function find(int $id) // 1
